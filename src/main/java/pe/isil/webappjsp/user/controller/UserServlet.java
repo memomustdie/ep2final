@@ -51,6 +51,7 @@ public class UserServlet extends HttpServlet {
         
         UserDao userDao = new UserDao();
         int rowsAffected=0;
+        String mensaje = "";
         
         String name = request.getParameter("name");
         String lastname = request.getParameter("lastname");
@@ -73,15 +74,18 @@ public class UserServlet extends HttpServlet {
         
         try{
             rowsAffected = userDao.registerUser(user);
+            mensaje = "Usuario registrado satisfactoriamente";
+            
         }catch(Exception e){
+            mensaje = e.toString();
             e.printStackTrace();
+            
+            
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/success.jsp");
         
-        if(rowsAffected > 0){
-            request.setAttribute("message", "Usuario registrado satisfactoriamente");
-        }
+        request.setAttribute("message", mensaje);
         
         dispatcher.forward(request,response);
         

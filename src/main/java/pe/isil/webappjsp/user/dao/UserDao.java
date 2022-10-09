@@ -16,8 +16,7 @@ import pe.isil.webappjsp.user.model.User;
 public class UserDao {
     //Aca va ir todo el codigo de acceso a datos
     
-    public int registerUser(User user){
-        try{
+    public int registerUser(User user) throws Exception {
             
             MysqlConnection mysqConn = new MysqlConnection();
             Connection conn = mysqConn.getConnection();
@@ -41,14 +40,6 @@ public class UserDao {
             rowsAffected = ps.executeUpdate();
             return rowsAffected;
         
-        }catch(Exception e){
-           
-            e.printStackTrace();
-            return 0;
-        }
     }
-    
-    
-    
     
 }
