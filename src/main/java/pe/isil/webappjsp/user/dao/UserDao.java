@@ -4,6 +4,7 @@
  */
 package pe.isil.webappjsp.user.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -90,4 +91,47 @@ public class UserDao {
             
     }
     
+    public String deleteUser(User user) throws Exception{
+        
+        
+        String message = "";
+        MysqlConnection mysqConn = new MysqlConnection();
+        Connection conn = mysqConn.getConnection();
+        int rowsAffected=0;
+        int count=0;
+        
+        //Primero evaluamos si el usuario existe
+        
+        PreparedStatement ps = conn.prepareStatement("select * from users where nroDoc = ?");
+        ps.setString(1, user.getNroDoc());
+        ResultSet rs = ps.executeQuery();
+        
+        while(rs.next()){
+            count++;
+        }
+        if (count > 0){
+            
+            String queryDelete = "delete from users where nroDoc=?";
+            
+            PreparedStatement dp = conn.prepareStatement(queryDelete);
+            dp.setString(1, user.getNroDoc());
+            rowsAffected = dp.executeUpdate();
+            
+            if(rowsAffected>0){
+                message = "Se elimino el usuario satisfactoriamente";
+                
+            }else{
+                message = "Ocurrio un error";
+            }
+            
+        }else{
+            message = "El usuario no existe";
+        }
+        
+        return message;
+        
+        
+            
+            
+    }
 }

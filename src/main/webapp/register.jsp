@@ -13,7 +13,7 @@
     </head>
     <body>
         
-        <h1>Ingrese el DNI que desea modificar :</h1>
+        <h1>Ingrese los datos del usuario :</h1>
         
         <form action="<%= request.getContextPath()%>/UserServlet" method="post">
             <table style="width:80%">

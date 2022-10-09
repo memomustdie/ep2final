@@ -17,7 +17,7 @@
         <ul>
             <li><a href="<%= request.getContextPath()%>/UserServlet">Add User</a></li>
             <li><a href="<%= request.getContextPath()%>/EditUserServlet">Edit User</a></li>
-            
+            <li><a href="<%= request.getContextPath()%>/DeleteUserServlet">Delete User</a></li>
         </ul>
     </body>
 </html>
