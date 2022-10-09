@@ -13,7 +13,7 @@
     </head>
     <body>
         
-        <h1>Complete the fields below :</h1>
+        <h1>Ingrese el DNI que desea modificar :</h1>
         
         <form action="<%= request.getContextPath()%>/UserServlet" method="post">
             <table style="width:80%">
@@ -39,7 +39,7 @@
         </tr>
         <tr>
             <td>Nro documento</td>
-            <td><input type="text" name="nroDoc" /></td>
+            <td><input type="text" name="nroDoc" placeholder="Ingrese el DNI a modificar"  /></td>
         </tr>
         <tr>
             <td>Enable</td>
