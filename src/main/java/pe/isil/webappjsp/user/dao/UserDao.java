@@ -111,11 +111,10 @@ public class UserDao {
         }
         if (count > 0){
             
-            String queryDelete = "delete from users where nroDoc=?";
-            
-            PreparedStatement dp = conn.prepareStatement(queryDelete);
-            dp.setString(1, user.getNroDoc());
-            rowsAffected = dp.executeUpdate();
+            CallableStatement cb = conn.prepareCall("{call deleteusers(?)}");
+            cb.setString(1, user.getNroDoc());
+            rowsAffected = cb.executeUpdate();
+
             
             if(rowsAffected>0){
                 message = "Se elimino el usuario satisfactoriamente";

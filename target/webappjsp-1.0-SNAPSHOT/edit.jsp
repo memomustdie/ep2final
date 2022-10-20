@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Ingrese el DNI del usuario para mofificar </h1>
+        <h1>Ingrese el DNI del usuario para modificar datos </h1>
         
         <form action="<%= request.getContextPath()%>/EditUserServlet" method="post">
             <table style="width:80%">
